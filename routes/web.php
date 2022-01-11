@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InterestsController;
 use App\Http\Controllers\GendersController;
 use App\Http\Controllers\PoliticsController;
+use App\Http\Controllers\dateabilitydeetsController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ChildrenController;
 use App\Http\Controllers\ReligionsController;
@@ -54,6 +56,20 @@ Route::post('admin/religion/store',[ReligionsController::class,'store']);
 Route::get('admin/religion/edit/{id}',[ReligionsController::class,'edit']);
 Route::post('admin/religion/update/{id}',[ReligionsController::class,'update']);
 Route::post('admin/religion/destroy/{id}',[ReligionsController::class,'destroy']);
+
+
+Route::post('admin/dateabilitydeets/store',[DateabilitydeetsController::class,'store']);
+Route::get('admin/dateabilitydeets/edit/{id}',[DateabilitydeetsController::class,'edit']);
+Route::post('admin/dateabilitydeets/update/{id}',[DateabilitydeetsController::class,'update']);
+Route::post('admin/dateabilitydeets/destroy/{id}',[DateabilitydeetsController::class,'destroy']);
+
+Route::get('admin/dateabilitydeets',[DateabilitydeetsController::class,'index']);
+
+Route::post('admin/interests/store',[InterestsController::class,'store']);
+Route::get('admin/interests/edit/{id}',[InterestsController::class,'edit']);
+Route::post('admin/interests/update/{id}',[InterestsController::class,'update']);
+Route::post('admin/interests/destroy/{id}',[InterestsController::class,'destroy']);
+Route::get('admin/interests',[InterestsController::class,'index']);
 
 //Route::resource('admin.gender',gendercontroller::class);
 

@@ -47,4 +47,13 @@ class user_profile extends Model
     public function Religion() {
         return $this->hasOne('religion','id','religion_id');
     }
+
+    public function interests() {
+        return $this->hasMany('interests_list','user_id','user_id');
+    }
+
+
+    public function dateabilitydeets() {
+        return $this->hasMany('dateabilitydeets_list','user_id','user_id');
+    }
 }
