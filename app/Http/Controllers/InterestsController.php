@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 
 class InterestsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {

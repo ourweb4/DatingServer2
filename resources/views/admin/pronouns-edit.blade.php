@@ -1,6 +1,6 @@
 <?php
 /*
-* File Name: dateabilitydeets-edit.blade.php
+* File Name: pronouns-edit.blade.php
 * Created on 1/7/2022
 * (c)2022 Bill Banks
 */
@@ -11,9 +11,9 @@
 
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Add dateabilitydeets</div>
+                <div class="card-header">Add pronouns</div>
                 <div class="card-body">
-                    <form method="post" action="{{url('admin/dateabilitydeets/update/'.$rec->id )}}">
+                    <form method="post" action="{{url('admin/pronouns/update/'.$rec->id )}}">
                         @csrf
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Description</label>

@@ -18,6 +18,7 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            <h1>Welcome to DateabilityApp.com</h1>
         </div>
     </div>
 </div>

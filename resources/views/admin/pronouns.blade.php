@@ -1,6 +1,6 @@
  <?php
 /*
-* File Name: religion.blade.php
+* File Name: pronouns.blade.php
 * Created on 1/4/2022
 * (c)2022 Bill Banks
 */
@@ -9,7 +9,7 @@
 <div class="row">
 <div class="col-md-8">
     <div class="card">
-        <div class="card-header">religion</div>
+        <div class="card-header">pronouns</div>
         <table class="table">
             <thead>
             <tr>
@@ -24,8 +24,8 @@
                 <th scope="row"> </th>
                 <td>{{$rec->id}}</td>
                 <td>{{$rec->description}} </td>
-                <td><a href="{{url('admin/religion/edit/'. $rec->id)}}" class="btn btn-info">Edit</a>
-                <a href="{{url('admin/religion/destroy/'. $rec->id)}}" class="btn btn-danger">Delete</a> </td>
+                <td><a href="{{url('admin/pronouns/edit/'. $rec->id)}}" class="btn btn-info">Edit</a>
+                <a href="{{url('admin/pronouns/destroy/'. $rec->id)}}" class="btn btn-danger">Delete</a> </td>
             </tr>
             @endforeach
             </tbody>
@@ -36,7 +36,7 @@
 
     <div class="col-md-4">
         <div class="card">
-            <div class="card-header">Add religion</div>
+            <div class="card-header">Add pronouns</div>
             <div class="card-body">
             <form method="post" action="{{route('admin.gemder.store')}}">
                 @csrf

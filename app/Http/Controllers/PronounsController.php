@@ -1,19 +1,20 @@
 <?php
 /*
-* File Name:  ChildrenController.php
-* Created on 1/10/2022
+* File Name:  PronounsController.php
+* Created on 1/14/2022
 * (c) 2022 Bill Banks
 */
 
 
 namespace App\Http\Controllers;
 
-use App\Models\children;
-
+//use App\Models\pronouns;
+use App\Models\pronouns;
 use Illuminate\Http\Request;
 
-class ChildrenController extends Controller
+class PronounsController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -22,8 +23,8 @@ class ChildrenController extends Controller
     public function index()
     {
         //
-        $recs = children::all();
-        return view('admin.children', compact('recs'));
+        $recs = pronouns::all();
+        return view('admin.pronouns', compact('recs'));
     }
 
     public function create()
@@ -37,41 +38,43 @@ class ChildrenController extends Controller
             'description' => 'required',
         ]);
 
-        $rec = new children();
+        $rec = new pronouns();
         $rec->description = $request->description;
         $rec->save();
 
-        return redirect('admin/children');
+        return redirect('admin/pronouns');
     }
 
-    public function show(children $children)
+
+    public function show(pronouns $pronouns)
     {
         //
     }
 
     public function edit( $id)
     {
-        $rec = children::all()->find($id);
-        return view('admin.children-edit', compact('rec'));
+        $rec = pronouns::all()->find($id);
+        return view('admin.pronouns-edit', compact('rec'));
     }
 
     public function update(Request $request, $id)
     {
         //
-        $rec = children::all()->find($id);
+        $rec = pronouns::all()->find($id);
         $rec->description = $request->description;
         $rec->save();
 
-        return redirect('admin/children');
+        return redirect('admin/pronouns');
 
     }
 
     public function destroy($id)
     {
         //
-        $rec = children::all()->find($id)->delete();
+        $rec = pronouns::all()->find($id)->delete();
 
-        return redirect('admin/children');
+        return redirect('admin/pronouns');
 
     }
+
 }

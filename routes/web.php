@@ -24,6 +24,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => 'auth'], function () {
+
 
 Route::get('admin/gender',[GendersController::class,'index']);
 Route::post('admin/gender/store',[GendersController::class,'store']);
@@ -70,6 +72,14 @@ Route::get('admin/interests/edit/{id}',[InterestsController::class,'edit']);
 Route::post('admin/interests/update/{id}',[InterestsController::class,'update']);
 Route::post('admin/interests/destroy/{id}',[InterestsController::class,'destroy']);
 Route::get('admin/interests',[InterestsController::class,'index']);
+
+    Route::post('admin/pronouns/store',[PronounsController::class,'store']);
+    Route::get('admin/pronouns/edit/{id}',[PronounsController::class,'edit']);
+    Route::post('admin/pronouns/update/{id}',[PronounsController::class,'update']);
+    Route::post('admin/pronouns/destroy/{id}',[PronounsController::class,'destroy']);
+    Route::get('admin/pronouns',[PronounsController::class,'index']);
+
+});
 
 //Route::resource('admin.gender',gendercontroller::class);
 

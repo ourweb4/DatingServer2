@@ -5,7 +5,7 @@
 * (c)2022 Bill Banks
 */
 
-@extends('layouts.master')
+@extends('layouts.database_master')
 @section('main')
     <div class="row">
 
