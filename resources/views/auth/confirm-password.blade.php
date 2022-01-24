@@ -1,10 +1,11 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
+@extends('layouts.master')
+
+@section('maint')
+    <div class="row">
+        <div class="col-md-8">
+
+    <div class="mb-4 text-sm text-gray-600">
             {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
         </div>
 
@@ -19,10 +20,11 @@
             </div>
 
             <div class="flex justify-end mt-4">
-                <x-jet-button class="ml-4">
+                <button type="submit" class="btn btn-primary">
                     {{ __('Confirm') }}
-                </x-jet-button>
+                </button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        </div>
+    </div>
+    @endsection

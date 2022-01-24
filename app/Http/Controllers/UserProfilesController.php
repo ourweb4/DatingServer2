@@ -8,15 +8,24 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\children;
+use App\Models\dateabilitydeets;
+use App\Models\dateabilitydeets_list;
+use App\Models\education;
+use App\Models\gender;
+use App\Models\interests;
+use App\Models\interests_list;
+use App\Models\politics;
+use App\Models\pronouns;
+use App\Models\Prounouns_list;
+use App\Models\religion;
 use App\Models\user_profile;
 use Illuminate\Http\Request;
 
 class UserProfilesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     public function index()
     {

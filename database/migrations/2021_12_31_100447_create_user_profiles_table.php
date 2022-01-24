@@ -34,14 +34,12 @@ class CreateUserProfilesTable extends Migration
             $table->integer('politics_id');
             $table->integer('children_id');
             $table->integer('religion_id');
+            $table->integer('user_id');
             $table->boolean('vaccine');
             $table->boolean('active');
 
 
             //
-            $table->foreignId('user_id')  ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -2,7 +2,7 @@
 @include('include.sidebar')
 
     <div class="container">
-        @yield('main')
+        @yield('maint')
     </div>
 @include('include.footer')
 </div>

@@ -1,8 +1,9 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+
+@extends('layouts.master')
+
+@section('maint')
+    <div class="row">
+        <div class="col-md-8">
 
         <div class="mb-4 text-sm text-gray-600">
             {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
@@ -25,10 +26,11 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
+                <button type="submit" class="btn btn-primary">
                     {{ __('Email Password Reset Link') }}
-                </x-jet-button>
+                </button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        </div>
+    </div>
+@endsection

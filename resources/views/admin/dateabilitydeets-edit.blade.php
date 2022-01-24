@@ -4,7 +4,7 @@
 * Created on 1/7/2022
 * (c)2022 Bill Banks
 */
-
+    ?>
 @extends('layouts.database_master')
 @section('main')
     <div class="row">

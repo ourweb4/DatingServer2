@@ -4,11 +4,16 @@
 * Created on 1/4/2022
 * (c)2022 Bill Banks
 */
+     ?>
  @extends('layouts.database_master')
  @section('main')
-<div class="row">
-<div class="col-md-8">
-    <div class="card">
+     <div class="col">
+         <div class="row justify-content-center">
+             <div class="col-md-8">
+
+
+
+             <div class="card">
         <div class="card-header">children</div>
         <table class="table">
             <thead>
@@ -19,9 +24,9 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($reca as $rec)
+            @foreach($recs as $rec)
             <tr>
-                <th scope="row"> </th>
+
                 <td>{{$rec->id}}</td>
                 <td>{{$rec->description}} </td>
                 <td><a href="{{url('admin/children/edit/'. $rec->id)}}" class="btn btn-info">Edit</a>
@@ -38,7 +43,7 @@
         <div class="card">
             <div class="card-header">Add children</div>
             <div class="card-body">
-            <form method="post" action="{{route('admin.gemder.store')}}">
+            <form method="post" action="{{url('admin/children/store')}}">
                 @csrf
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Description</label>
@@ -55,4 +60,5 @@
         </div>
     </div>
 </div>
+     </div>
  @endsection

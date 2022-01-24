@@ -1,8 +1,9 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+
+@extends('layouts.master')
+
+@section('maint')
+    <div class="row">
+        <div class="col-md-8">
 
         <div x-data="{ recovery: false }">
             <div class="mb-4 text-sm text-gray-600" x-show="! recovery">
@@ -53,5 +54,6 @@
                 </div>
             </form>
         </div>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        </div>
+    </div>
+@endsection

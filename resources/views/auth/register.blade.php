@@ -1,10 +1,9 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+@extends('layouts.master')
+
+@section('maint')
+    <div class="row">
+        <div class="col-md-8">
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
@@ -15,6 +14,8 @@
             </div>
 
             <div class="mt-4">
+
+
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
@@ -50,11 +51,14 @@
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
-
-                <x-jet-button class="ml-4">
+                <br>
+                <button type="submit" class="btn btn-primary">
                     {{ __('Register') }}
-                </x-jet-button>
+                </button>
             </div>
+
+
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        </div>
+    </div>
+@endsection
