@@ -29,14 +29,14 @@ class CreateUserProfilesTable extends Migration
             $table->string('height')->nullable();
             $table->string('about',500)->nullable();
             $table->date('dob');
-            $table->integer('gender_id');
-            $table->integer('education_id');
-            $table->integer('politics_id');
-            $table->integer('children_id');
-            $table->integer('religion_id');
-            $table->integer('user_id');
-            $table->boolean('vaccine');
-            $table->boolean('active');
+            $table->integer('gender_id')->nullable();
+            $table->integer('education_id')->nullable();
+            $table->integer('politics_id')->nullable();
+            $table->integer('children_id')->nullable();
+            $table->integer('religion_id')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->boolean('vaccine')->nullable();
+            $table->boolean('active')->nullable();
 
 
             //

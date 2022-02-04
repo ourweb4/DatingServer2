@@ -4,12 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InterestsController;
 use App\Http\Controllers\GendersController;
 use App\Http\Controllers\PoliticsController;
-use App\Http\Controllers\dateabilitydeetsController;
+use App\Http\Controllers\DateabilitydeetsController;
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\UserProfilesController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\ChildrenController;
 use App\Http\Controllers\ReligionsController;
 use App\Http\Controllers\PronounsController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,9 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', [adminController::class, 'index']);
+
+Route::get('/userprofile/{id}', [UserProfilesController::class,'index']);
+Route::post('/userprofile/store/{id}', [UserProfilesController::class,'store']);
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -91,6 +96,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/logout', [LogoutController::class,'perform']);
 
 Auth::routes();
 

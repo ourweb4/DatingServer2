@@ -12,7 +12,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Interests_list extends Model
 {
-    public function interests() {
-        return $this->hasOne('interests','id','interests_id');
-    }
+
 }

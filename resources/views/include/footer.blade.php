@@ -11,6 +11,7 @@
         ]) ?> </span>
 </div>
 
+
 <div align=center> <span><?= __tr('This website was made by ') ?>
             <a href="http://ourweb.net">Ourweb.net</a>
             </span>

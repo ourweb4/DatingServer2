@@ -70,4 +70,9 @@ class user_profile extends Model
     {
         return $this->hasMany('dateabilitydeets_list','user_id','user_id');
     }
+
+    public function Photos()  {
+        return $this->hasMany('photos','user_id','user_id');
+
+    }
 }

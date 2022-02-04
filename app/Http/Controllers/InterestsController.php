@@ -22,7 +22,7 @@ class InterestsController extends Controller
     {
         //
         $recs = interests::all();
-        return view('admin.interests', compact('recs'));
+        return view('admin.Interests', compact('recs'));
     }
 
     public function create()
