@@ -8,6 +8,40 @@
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
+if (!function_exists('In_list')) {
+
+    function In_list($list, $item, $listno): bool
+    {
+        $found = false;
+        echo 'inlist ' . $list . '\n';
+        foreach ($list as $l) {
+            switch ($listno) {
+                case  3:
+                     if ($l->pronouns_id == $item)
+                       return true;
+                     break;
+                case  2:
+                    if ($l->dateabilitydeets_id == $item)
+                        return true;
+                    break;
+                case  1:
+                    echo $l->interests_id . "\n";
+                    if ($l->interests_id == $item)
+                        return true;
+                    break;
+
+
+            }
+
+
+
+        }
+
+        return $found;
+    }
+}
+
+
 if (!function_exists('Is_Admin')) {
 
     function Is_Admin(): bool

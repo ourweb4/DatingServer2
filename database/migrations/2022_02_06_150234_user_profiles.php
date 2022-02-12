@@ -1,7 +1,7 @@
 <?php
 /*
-* File Name:  UserProfile.php
-* Created on 2/4/2022
+* File Name:  UserProfiles.php
+* Created on 2/6/2022
 * (c) 2022 Bill Banks
 */
 
@@ -10,7 +10,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserProfile extends Migration
+class UserProfiles extends Migration
 {
     public function up()
     {
@@ -19,12 +19,13 @@ class UserProfile extends Migration
 
             $table->string('instagram_utl')->nullable();
             $table->string('facebook_url')->nullable();
+            $table->string('email')->nullable();
         });
     }
 
     public function down()
     {
-        Schema::table('user_profile', function (Blueprint $table) {
+        Schema::table('user_profiles', function (Blueprint $table) {
             //
         });
     }

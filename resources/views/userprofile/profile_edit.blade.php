@@ -62,8 +62,26 @@
 
                                         <div  class="row">
                                             <div class="col">
+                                                <label for="exampleFormControlInput1" class="form-label">Instagram</label>
+                                                <input type="text" name="instagram_utl" value="{{$up->instagram_utl}}" class="form-control" id="exampleFormControlInput1" >
+                                            </div>
+                                            <div class="col">
+                                                <label for="exampleFormControlInput1" class="form-label">Facebook</label>
+                                                <input type="text" name="facebook_url" value="{{$up->facebook_url}}" class="form-control" id="exampleFormControlInput1" >
+                                            </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div  class="row">
+                                            <div class="col">
                                                 <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
                                                 <input type="text" name="phonenumber" value="{{$up->phonenumber}}" class="form-control" id="exampleFormControlInput1" >
+                                            </div>
+                                            <div class="col">
+                                                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                                <input type="text" name="email" value="{{$up->email}}" class="form-control" id="exampleFormControlInput1" >
                                             </div>
                                             <div class="col">
                                                 <label for="exampleFormControlInput1" class="form-label">DOB</label>
@@ -114,7 +132,7 @@
                                             <select name="gender_id" class="form-select" aria-label="Default select example">
 
                                                @foreach($gender as $rec)
-                                                  <option value="{{$rec->id}} @if($up->gender_id == $rec->id)  selected @endif ">{{$rec->description}}</option>
+                                                  <option value="{{$rec->id}}" @if($up->gender_id == $rec->id)  selected @endif >{{$rec->description}}</option>
                                                 @endforeach
                                             </select>
 
@@ -125,7 +143,7 @@
                                             <select name="politics_id" class="form-select" aria-label="Default select example">
 
                                                 @foreach($politics as $rec)
-                                                    <option value="{{$rec->id}} @if($up->politics_id == $rec->id)  selected @endif ">{{$rec->description}}</option>
+                                                    <option value="{{$rec->id}}" @if($up->politics_id == $rec->id)  selected @endif >{{$rec->description}}</option>
                                                 @endforeach
                                             </select>
 
@@ -136,7 +154,7 @@
                                             <select name="education_id" class="form-select" aria-label="Default select example">
 
                                                 @foreach($education as $rec)
-                                                    <option value="{{$rec->id}} @if($up->education_id == $rec->id)  selected @endif ">{{$rec->description}}</option>
+                                                    <option value="{{$rec->id}}" @if($up->education_id == $rec->id)  selected @endif >{{$rec->description}}</option>
                                                 @endforeach
                                             </select>
 
@@ -151,7 +169,7 @@
                                             <select name="religion_id" class="form-select" aria-label="Default select example">
 
                                                 @foreach($religion as $rec)
-                                                    <option value="{{$rec->id}} @if($up->religion_id == $rec->id)  selected @endif ">{{$rec->description}}</option>
+                                                    <option value="{{$rec->id}}" @if($up->religion_id == $rec->id)  selected @endif >{{$rec->description}}</option>
                                                 @endforeach
                                             </select>
 
@@ -162,12 +180,50 @@
                                             <select name="children_id" class="form-select" aria-label="Default select example">
 
                                                 @foreach($children as $rec)
-                                                    <option value="{{$rec->id}} @if($up->children_id == $rec->id)  selected @endif ">{{$rec->description}}</option>
+                                                    <option value="{{$rec->id}}" @if($up->children_id == $rec->id)  selected @endif >{{$rec->description}}</option>
                                                 @endforeach
                                             </select>
 
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="exampleFormControlInput1" class="form-label">Interests</label>
+                                            <select name="interests[]" multiple size="10" class="form-select" aria-label="Default select example">
+
+                                                @foreach($interests as $rec)
+                                                    <option value="{{$rec->id}}" @if(In_list($interests_list,$rec->id,1))  selected @endif >{{$rec->description}}</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="exampleFormControlInput1" class="form-label">Dateabilitydeets</label>
+                                            <select name="dateabilitydeets[]" multiple size="10" class="form-select" aria-label="Default select example">
+
+                                                @foreach($dateabilitydeets as $rec)
+                                                    <option value="{{$rec->id}}" @if(In_list($dateabilitydeets_list,$rec->id,2))  selected @endif >{{$rec->description}}</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="exampleFormControlInput1" class="form-label">Pronouns</label>
+                                            <select name="pronouns[]" multiple size="10" class="form-select" aria-label="Default select example">
+
+                                                @foreach($pronouns as $rec)
+                                                    <option value="{{$rec->id}}" @if(In_list($pronouns_list,$rec->id,3))  selected @endif >{{$rec->description}}</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -188,7 +244,7 @@
                     </div>
 
                         <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
+
 
                 </form>
 

@@ -38,6 +38,7 @@ public function index($id)
             if ($id = Auth::user()->id) {
                 $up = new user_profile();
                 $up->user_id = $id;
+                $up->email = Auth::user()->email;
                 $up->save();
 
             }
@@ -52,12 +53,13 @@ public function index($id)
         $pronouns = pronouns::all();
 
            //User options
+        $mid = $id;
 
-        $dateabilitydeets_list = dateabilitydeets_list::where('user_id','=',$id);
- //       $interests_list = interests_list::where('user_id','=',$id);
-        $pronouns_list = Prounouns_list::where('user_id','=',$id);
+        $dateabilitydeets_list = dateabilitydeets_list::all()->where('user_id','=',$id);
+       $interests_list = interests_list::all()->where('user_id','=',$id);
+        $pronouns_list = Prounouns_list::all()->where('user_id','=',$id);
 
-        if ($id = Auth::user()->id) {
+        if (Auth::user()->id = $mid) {
 
             return view('userprofile.profile_edit', compact('up', 'gender',
                 'education',
@@ -68,7 +70,7 @@ public function index($id)
                 'interests',
                 'pronouns',
                 'dateabilitydeets_list',
- //               'interests_list',
+                'interests_list',
                 'pronouns_list'));
         } else  {
             return view('userprofile.profile_view', compact('up'));
@@ -81,12 +83,51 @@ public function index($id)
         //
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request, $pid)
     {
         $valid  = $request->validate([
            'profilepic' => 'mimes;jpg.jpeg,png'
         ]);
-        $up = user_profile::firstOrCreate($id);
+        $up = user_profile::all()->find($pid);
+
+        $id = $up->user_id;
+
+
+        //option list
+        $pronouns=$request->pronouns;
+        $interests=$request->interests;
+        $dateabilitydeets=$request->dateabilitydeets;
+        Prounouns_list::where('user_id','=',$id)->delete();
+        dateabilitydeets_list::where('user_id','=',$id)->delete();
+        interests_list::where('user_id','=',$id)->delete();
+
+        if (isset($pronouns)) {
+            for ($i = 0; $i < count($pronouns); $i++) {
+                $rec = new Prounouns_list();
+                $rec->user_id = $id;
+                $rec->pronouns_id = $pronouns[$i];
+                $rec->save();
+            }
+        }
+
+        if (isset($interests) ) {
+            for ($i = 0; $i < count($interests); $i++) {
+                $rec = new interests_list();
+                $rec->user_id = $id;
+                $rec->interests_id = $interests[$i];
+                $rec->save();
+            }
+        }
+
+        if (isset($dateabilitydeets)) {
+            for ($i = 0; $i < count($dateabilitydeets); $i++) {
+                $rec = new dateabilitydeets_list();
+                $rec->user_id = $id;
+                $rec->dateabilitydeets_id = $dateabilitydeets[$i];
+                $rec->save();
+            }
+        }
+
 
         // profilepic
 
@@ -109,6 +150,9 @@ public function index($id)
         $up->gender_id=$request->gender_id;
         $up->phonenumber=$request->phonenumber;
         $up->dob=$request->dob;
+        $up->instagram_utl=$request->instagram_utl;
+        $up->facebook_url=$request->facebook_url;
+        $up->email=$request->email;
         $up->city=$request->city;
         $up->state=$request->state;
         $up->zipcode=$request->zipcode;
@@ -127,6 +171,8 @@ public function index($id)
 
 
        $up->save();
+
+       return redirect('/home');
     }
 
     public function show(user_profile $user_profile)

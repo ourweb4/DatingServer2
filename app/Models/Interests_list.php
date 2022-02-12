@@ -10,7 +10,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Interests_list extends Model
-{
 
+class interests_list extends Model
+{
+    public function Interests() {
+        return $this->hasOne('Interests','id','Interests_id');
+    }
 }
