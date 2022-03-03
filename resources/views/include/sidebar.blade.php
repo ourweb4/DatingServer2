@@ -21,11 +21,16 @@
                                 </a>
                             </li>
                         @endif
-
+          @if(Is_Login())
             <li  class="nav-item">                        <a class="nav-link" href="<?= url('/userprofile/' . $user_id) ?>">
                     <span><?= __tr('My Profile') ?></span>
                 </a>
             </li>
+                <li  class="nav-item">                        <a class="nav-link" href="<?= url('/photos' ) ?>">
+                        <span><?= __tr('My Photos') ?></span>
+                    </a>
+                </li>
+            @endif
 
         </ul>
 

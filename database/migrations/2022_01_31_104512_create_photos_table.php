@@ -19,6 +19,7 @@ class CreatephotosTable extends Migration
 
             $table->integer('user_id');
             $table->string('filename');
+            $table->string('title');
             //
 
             $table->timestamps();

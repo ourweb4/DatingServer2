@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InterestsController;
 use App\Http\Controllers\GendersController;
 use App\Http\Controllers\PoliticsController;
+use App\Http\Controllers\zipController;
 use App\Http\Controllers\DateabilitydeetsController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\UserProfilesController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ChildrenController;
 use App\Http\Controllers\ReligionsController;
 use App\Http\Controllers\PronounsController;
@@ -33,6 +35,13 @@ Route::get('/admin', [adminController::class, 'index']);
 Route::get('/userprofile/{id}', [UserProfilesController::class,'index']);
 Route::post('/userprofile/store/{id}', [UserProfilesController::class,'store']);
 
+
+Route::get('/photos', [PhotosController::class,'index']);
+Route::post('/photos/store', [PhotosController::class,'store']);
+Route::get('/photos/destroy/{id}', [PhotosController::class, 'destroy']);
+
+Route::get('/zip',[zipController::class,'index']);
+Route::post('/zip',[zipController::class,'findcodes']);
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -102,3 +111,4 @@ Route::get('/logout', [LogoutController::class,'perform']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

@@ -21,6 +21,13 @@
             </li>
             <br>
             <li class="nav-item">
+                <a class="nav-link" href="<?= url('zip') ?>">
+                    Zip
+                </a>
+            </li>
+            <br>
+
+            <li class="nav-item">
                 <a class="nav-link" href="<?= url('admin/gender') ?>">
 
                     Gender

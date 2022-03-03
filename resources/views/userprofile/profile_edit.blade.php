@@ -91,6 +91,14 @@
                                                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                                 </div>
 
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label for="exampleFormControlInput1" class="form-label">Send message</label>
+                                                        <input type="checkbox" name="sendmess" value="{{$up->sendmess}}" >
+                                                    </div>
+                                                </div>
+
+
                                             </div>
 
                                         </div>
@@ -104,7 +112,11 @@
 
                                         <div  class="row">
                                             <div class="col">
-                                              <img src="{{$up->profilepicture}}">
+                                                @if(empty($up->profilepicture))
+                                                    <img class="img" src="{{asset('images/nopic.png')}}">
+                                                @else
+                                                   <img src="{{asset($up->profilepicture)}}">
+                                                @endif
                                             </div>
                                             <div class="col">
                                                 <label for="exampleFormControlInput1" class="form-label">Profile Pic</label>
@@ -237,6 +249,12 @@
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div class="container">
+                                    <div class="row">
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">About Me</label>
+                                            <input  type="text" name="about" value="{{$up->about}}" class="form-control"  size="5">
+                                        </div>
+                                    </div>
 `
                                 </div>
                             </div>

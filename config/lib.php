@@ -55,6 +55,18 @@ if (!function_exists('Is_Admin')) {
     }
 }
 
+
+if (!function_exists('Is_Login')) {
+
+    function Is_Login(): bool
+    {
+
+        return Auth::check();
+    }
+}
+
+
+
 if (!function_exists('__tr')) {
     /**
      * String translations for gettext

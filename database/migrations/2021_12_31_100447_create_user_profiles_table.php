@@ -28,7 +28,7 @@ class CreateUserProfilesTable extends Migration
             $table->string('occupation')->nullable();
             $table->string('height')->nullable();
             $table->string('about',500)->nullable();
-            $table->date('dob');
+            $table->string('dob')->nullable();
             $table->integer('gender_id')->nullable();
             $table->integer('education_id')->nullable();
             $table->integer('politics_id')->nullable();

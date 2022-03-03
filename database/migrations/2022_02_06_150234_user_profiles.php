@@ -20,6 +20,7 @@ class UserProfiles extends Migration
             $table->string('instagram_utl')->nullable();
             $table->string('facebook_url')->nullable();
             $table->string('email')->nullable();
+            $table->boolean('sendmess')->nullable();
         });
     }
 

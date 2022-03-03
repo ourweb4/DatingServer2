@@ -1,0 +1,4 @@
+GET https://redline-redline-zipcode.p.rapidapi.com/rest/multi-radius.json/10/mile
+Accept: application/json
+
+###

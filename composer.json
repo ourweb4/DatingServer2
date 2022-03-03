@@ -6,18 +6,21 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "infyomlabs/laravel-generator": "^3.0",
-        "laravelcollective/html": "^6.2",
-        "infyomlabs/adminlte-templates": "^3.0",
+        "ext-gd": "*",
+        "darkaonline/l5-swagger": "^8.3",
         "doctrine/dbal": "~2.3",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.4",
+        "infyomlabs/adminlte-templates": "^3.0",
+        "infyomlabs/laravel-generator": "^3.0",
         "intervention/image": "^2.7",
         "laravel/framework": "^8.75",
         "laravel/jetstream": "^2.3",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "*"
+        "laravel/ui": "*",
+        "laravelcollective/html": "^6.2",
+      "ext-curl": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

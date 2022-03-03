@@ -59,7 +59,7 @@ public function index($id)
        $interests_list = interests_list::all()->where('user_id','=',$id);
         $pronouns_list = Prounouns_list::all()->where('user_id','=',$id);
 
-        if (Auth::user()->id = $mid) {
+        if (Auth::user()->id = $mid || Is_Admin()) {
 
             return view('userprofile.profile_edit', compact('up', 'gender',
                 'education',
@@ -86,7 +86,7 @@ public function index($id)
     public function store(Request $request, $pid)
     {
         $valid  = $request->validate([
-           'profilepic' => 'mimes;jpg.jpeg,png'
+         //  'profilepic' =>  'sometimes|file|image|mimes:jpeg,png,jpg,gif,svg|max:5000'
         ]);
         $up = user_profile::all()->find($pid);
 
@@ -135,13 +135,13 @@ public function index($id)
         if (!empty($pic)) {
             $old_pic = $up->profilepicture;
             if (!empty($old_pic)) {
-                unlink($old_pic);
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/public/' .$old_pic);
             }
 
             $name_gen = hexdec(uniqid());
-            $ext = strtolower($pic->getClientOriginalExtension());
+            $ext = strtoupper($pic->getClientOriginalExtension());
 
-            $full_name = 'storage/' . $name_gen . '.' . $ext;
+            $full_name =  'images/' . $name_gen . '.' . $ext;
 
             Image::make($pic)->resize(200, 200)->save($full_name);
             $up->profilepicture = $full_name;
@@ -153,6 +153,7 @@ public function index($id)
         $up->instagram_utl=$request->instagram_utl;
         $up->facebook_url=$request->facebook_url;
         $up->email=$request->email;
+        $up->sendmess=$request->sendmess;
         $up->city=$request->city;
         $up->state=$request->state;
         $up->zipcode=$request->zipcode;

@@ -75,4 +75,13 @@ class user_profile extends Model
         return $this->hasMany('photos','user_id','user_id');
 
     }
+
+    public function Age() : int {
+
+        $dateOfBirth = $this->dob;
+        $today = date("Y-m-d");
+        $diff = date_diff(date_create($dateOfBirth), date_create($today));
+        return $diff->format('%y');
+
+    }
 }
