@@ -76,6 +76,14 @@ class user_profile extends Model
 
     }
 
+    public function Sent_Messages() {
+        return $this->hasMany('messages','from_user_id','user_id');
+    }
+
+    public function Recv_Messages() {
+        return $this->hasMany('messages','to_user_id','user_id');
+    }
+
     public function Age() : int {
 
         $dateOfBirth = $this->dob;

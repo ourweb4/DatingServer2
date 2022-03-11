@@ -8,6 +8,7 @@ use App\Http\Controllers\zipController;
 use App\Http\Controllers\DateabilitydeetsController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\UserProfilesController;
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ChildrenController;
@@ -93,10 +94,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/interests', [InterestsController::class, 'index']);
 
     Route::post('/admin/pronouns/store', [PronounsController::class, 'store']);
+    Route::get('/admin/pronouns', [PronounsController::class, 'index']);
     Route::get('/admin/pronouns/edit/{id}', [PronounsController::class, 'edit']);
     Route::post('/admin/pronouns/update/{id}', [PronounsController::class, 'update']);
     Route::get('/admin/pronouns/destroy/{id}', [PronounsController::class, 'destroy']);
-    Route::get('/admin/pronouns', [PronounsController::class, 'index']);
+
+    Route::post('/message/store', [MessagesController::class, 'store']);
+    Route::get('/message', [MessagesController::class, 'index']);
+    Route::get('/message/edit/{id}', [MessagesController::class, 'edit']);
+    Route::post('/message/read/{id}', [MessagesController::class, 'read']);
+    Route::get('/message/destroy/{id}', [MessagesController::class, 'destroy']);
+    Route::get('/message/new/[id}', [MessagesController::class, 'new']);
+
 
 });
 
