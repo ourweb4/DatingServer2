@@ -26,8 +26,26 @@
                     <span><?= __tr('My Profile') ?></span>
                 </a>
             </li>
+                <li  class="nav-item">                        <a class="nav-link" href="<?= url('/message' ) ?>">
+                        <span><?= __tr('My Messages') ?></span>
+                    </a>
+                </li>
                 <li  class="nav-item">                        <a class="nav-link" href="<?= url('/photos' ) ?>">
                         <span><?= __tr('My Photos') ?></span>
+                    </a>
+                </li>
+                <li  class="nav-item">                        <a class="nav-link" href="<?= url('/match' ) ?>">
+                        <span><?= __tr('Matchs') ?></span>
+                    </a>
+                </li>
+
+                <li  class="nav-item">                        <a class="nav-link" href="<?= url('/like/who' ) ?>">
+                        <span><?= __tr('Who I like') ?></span>
+                    </a>
+                </li>
+
+                <li  class="nav-item">                        <a class="nav-link" href="<?= url('/like/me' ) ?>">
+                        <span><?= __tr('Who like me') ?></span>
                     </a>
                 </li>
             @endif

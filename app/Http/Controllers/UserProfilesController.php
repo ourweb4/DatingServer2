@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\children;
+use App\Models\photos;
 use App\Models\dateabilitydeets;
 use App\Models\dateabilitydeets_list;
 use App\Models\education;
@@ -58,6 +59,7 @@ public function index($id)
         $dateabilitydeets_list = dateabilitydeets_list::all()->where('user_id','=',$id);
        $interests_list = interests_list::all()->where('user_id','=',$id);
         $pronouns_list = Prounouns_list::all()->where('user_id','=',$id);
+        $photos_list = photos::all()->where('user_id','=',$id);
 
         if (Auth::user()->id = $mid || Is_Admin()) {
 
@@ -73,7 +75,18 @@ public function index($id)
                 'interests_list',
                 'pronouns_list'));
         } else  {
-            return view('userprofile.profile_view', compact('up'));
+            return view('userprofile.profile_view', compact('up', 'gender',
+                'education',
+                'children',
+                'politics',
+                'religion',
+                'dateabilitydeets',
+                'interests',
+                'pronouns',
+                'dateabilitydeets_list',
+                'photos_list',
+                'interests_list',
+                'pronouns_list'));
         }
 
     }
@@ -181,15 +194,6 @@ public function index($id)
         //
     }
 
-    public function edit(user_profile $user_profile)
-    {
-        //
-    }
-
-    public function update(Request $request, user_profile $user_profile)
-    {
-        //
-    }
 
     public function destroy(user_profile $user_profile)
     {

@@ -22,8 +22,8 @@ class Filter
         $this->mile=$mile;
         $this->zipcode = $zipcode;
         $this->gender=$gender;
-        $this->lage=$lage;
-        $this->hage=$hage;
+        $this->lage= (int) $lage;
+        $this->hage= (int) $hage;
     }
 
     public function run() {

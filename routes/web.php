@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LikesController;
 use App\Http\Controllers\InterestsController;
+use App\Http\Controllers\MatchController;
 use App\Http\Controllers\GendersController;
 use App\Http\Controllers\PoliticsController;
 use App\Http\Controllers\zipController;
@@ -53,7 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/admin/gender/update/{id}', [GendersController::class, 'update']);
     Route::get('/admin/gender/destroy/{id}', [GendersController::class, 'destroy']);
 
-    Route::get('//admin/education', [EducationController::class, 'index']);
+    Route::get('/admin/education', [EducationController::class, 'index']);
     Route::post('/admin/education/store', [EducationController::class, 'store']);
     Route::get('/admin/education/edit/{id}', [EducationController::class, 'edit']);
     Route::post('/admin/education/update/{id}', [EducationController::class, 'update']);
@@ -106,6 +108,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/message/destroy/{id}', [MessagesController::class, 'destroy']);
     Route::get('/message/new/[id}', [MessagesController::class, 'new']);
 
+    Route::get('/match',[MatchController::class,'index']);
+    Route::post('/match',[MatchController::class,'match']);
+
+    Route::get('/like/new/{id}',[LikesController::class,'new']);
+
+    Route::get('/like/me',[LikesController::class,'me']);
+    Route::get('/like/who',[LikesController::class,'who']);
+    Route::get('/like/destroy/{id}',[LikesController::class,'destroy']);
 
 });
 
