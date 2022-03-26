@@ -27,7 +27,7 @@
 
                 </div>
                 <div class="row">
-                    {{$up->Gender()}}, {{$up->Age()}}, {{$up->Pronouns()}} @if ($up->vaccine)
+                    {{$up->Gender()->}}, {{$up->Age()}}, {{$up->Pronouns()}} @if ($up->vaccine)
                                                                                Vaccine
                     @else
                                                                                Not Vaccine

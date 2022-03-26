@@ -9,6 +9,20 @@
 
 namespace App\Models;
 
+use App\Models\children;
+use App\Models\gender;
+
+use App\Models\photos;
+use App\Models\dateabilitydeets;
+use App\Models\dateabilitydeets_list;
+use App\Models\education;
+//use App\Models\gender;
+use App\Models\interests;
+use App\Models\interests_list;
+use App\Models\politics;
+use App\Models\pronouns;
+use App\Models\Prounouns_list;
+use App\Models\religion;
 use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Database\Eloquent\Relations;
 
@@ -24,7 +38,8 @@ class user_profile extends Model
      */
     public function Gender()
     {
-        return $this->hasOne('gender','id','gender_id');
+        $rec = gender::find($this->gender_id)->get();
+        return $rec->description;
     }
 
 
@@ -33,7 +48,8 @@ class user_profile extends Model
      */
     public function Education()
     {
-        return $this->hasOne('education','id','education_id');
+        $rec = education::find($this->education_id)->get();
+        return $rec->description;
     }
 
     /**
@@ -41,47 +57,61 @@ class user_profile extends Model
      */
     public function Politics()
     {
-         return $this->hasOne('politics','id','politic_id');
+        $rec = politics::find($this->politics_id)->get();
+        return $rec->description;
     }
 
     public function Children()
     {
-        return $this->hasOne('children','id','children_id');
+        $rec = children::find($this->children_id)->get();
+        return $rec->description;
     }
 
     public function Religion()
     {
-        return $this->hasOne('religion','id','religion_id');
+        $rec = religion::find($this->religion_id)->get();
+        return $rec->description;
     }
 
     public function Interests()
     {
-        return $this->hasMany('interests_list','user_id','user_id');
+        //return $this->hasMany('interests_list','user_id','user_id');
+        $ids = interests_list::all()->where('user_id','=',$this->user_id);
+        foreach ($ids as $id)
+            $recs[] = interests::find($id)->get();
+        return $recs;
+
     }
 
 
     public function Pronouns()
     {
-        return $this->hasMany('pronouns_list','user_id','user_id');
+        $ids = Prounouns_list::all()->where('user_id','=',$this->user_id);
+        foreach ($ids as $id)
+            $recs[] = pronouns::find($id)->get();
+        return $recs;
     }
 
 
     public function Dateabilitydeets()
     {
-        return $this->hasMany('dateabilitydeets_list','user_id','user_id');
+        $ids = dateabilitydeets_list::all()->where('user_id','=',$this->user_id);
+        foreach ($ids as $id)
+            $recs[] = dateabilitydeets::find($id)->get();
+        return $recs;
     }
 
     public function Photos()  {
-        return $this->hasMany('photos','user_id','user_id');
+        return photos::all()->where('user_id','=',$this->user_id);
 
     }
 
     public function Sent_Messages() {
-        return $this->hasMany('messages','from_user_id','user_id');
+        return messages::all()->where('from_user_id','=',$this->user_id);
     }
 
     public function Recv_Messages() {
-        return $this->hasMany('messages','to_user_id','user_id');
+        return messages::all()->where('to_user_id','=',$this->user_id);
     }
 
     public function Age() : int {
@@ -89,7 +119,7 @@ class user_profile extends Model
         $dateOfBirth = $this->dob;
         $today = date("Y-m-d");
         $diff = date_diff(date_create($dateOfBirth), date_create($today));
-        return $diff->format('%y');
+        return (int) $diff->format('%y');
 
     }
 }

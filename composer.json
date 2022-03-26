@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-curl": "*",
         "ext-gd": "*",
         "darkaonline/l5-swagger": "^8.3",
         "doctrine/dbal": "~2.3",
@@ -16,11 +17,10 @@
         "intervention/image": "^2.7",
         "laravel/framework": "^8.75",
         "laravel/jetstream": "^2.3",
-        "laravel/sanctum": "^2.11",
+        "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.5",
         "laravel/ui": "*",
-        "laravelcollective/html": "^6.2",
-      "ext-curl": "*"
+        "laravelcollective/html": "^6.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

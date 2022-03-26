@@ -12,4 +12,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class children extends Model
 {
+    protected $fillable =['description'];
 }
