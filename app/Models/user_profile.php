@@ -32,6 +32,7 @@ use \Illuminate\Database\Eloquent\Relations;
 class user_profile extends Model
 {
 
+    protected $fillable = ['user_id','active','email'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

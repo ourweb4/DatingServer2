@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\user_profile;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use  Illuminate\Support\Facades\Hash;
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Validation\Rules\Password as PasswordRules;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
+
 
 class AuthController extends Controller
 {
@@ -33,6 +36,19 @@ class AuthController extends Controller
             'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
         ]);
+        $id = $user->id;
+        $up = user_profile::create([
+             'user_id' => $id,
+            'active' => true,
+            'email' => $fields['email']
+        ]);
+
+        log::channel('user')->info('User Created ',[
+            'id' => $id,
+            'email' => $user->email
+        ]);
+
+
         $token = $user->createToken('ourweb997')->plainTextToken;
 
         $res = [
@@ -77,8 +93,17 @@ class AuthController extends Controller
         ],401);
     }
 
+    $up = user_profile::where('user_id','=',$user->id)->first();
+    if (!$up->active) {
+        return response([
+            'message' => 'User  block'
+        ],403);
 
-
+    }
+            log::channel('user')->info('User Login ',[
+                'id' => $user->id,
+                'email' => $user->email
+            ]);
         $token = $user->createToken('ourweb997')->plainTextToken;
 
         $res = [
@@ -91,6 +116,13 @@ class AuthController extends Controller
 
     public function Logout(Request $request) {
         auth()->user()->tokens()->delete();
+        $user = auth()->user();
+
+        log::channel('user')->info('User Logout ',[
+            'id' => $user->id,
+            'email' => $user->email
+        ]);
+
         return response([
             'message' => 'Logout'
         ]);

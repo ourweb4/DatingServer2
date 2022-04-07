@@ -12,6 +12,7 @@ use App\Http\Controllers\DateabilitydeetsController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\UserProfilesController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\UserSystemController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ChildrenController;
@@ -118,6 +119,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/like/who',[LikesController::class,'who']);
     Route::get('/like/destroy/{id}',[LikesController::class,'destroy']);
 
+    Route::get('/usersystem',[UserSystemController::class,'index']);
+    Route::get('/usersystem/{id|}',[UserSystemController::class,'toddle']);
+    Route::post('/usersystem',[UserSystemController::class,'search']);
 });
 
 Route::get('/email/verify', function () {

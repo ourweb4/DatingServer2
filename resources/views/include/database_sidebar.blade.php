@@ -84,6 +84,13 @@
                 </a>
             </li>
             <br>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= url('usersystem') ?>">
+
+                    <span><?= __tr('User System') ?></span>
+                </a>
+            </li>
+            <br>
 
 
         </ul>

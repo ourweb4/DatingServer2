@@ -37,6 +37,7 @@ class Filter
             $recs = user_profile::all()
                 ->where('zipcode', '=',$zip)
                 ->where('gender_id','=',$this->gender)
+                ->where('active','=',true)
                 ->get();
             foreach ($recs as $rec) {
 

@@ -6,8 +6,9 @@
 */
 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\likes;
 use Illuminate\Http\Request;
 use App\Models\user_profile;
@@ -29,7 +30,8 @@ class LikesController extends Controller
         $dummy->to_user_id  = $id;
         $dummy->from_user_id = $user_id;
         $dummy->save();
-        return redirect()->back();
+        return  response()->json($dummy);
+
     }
 
     public function me()
@@ -43,8 +45,7 @@ class LikesController extends Controller
             $recs[] = $rec;
         }
         $title = "Who likes  me";
-
-        return view('likes',compact('recs','title'));
+        return  response()->json($recs);
 
     }
 
@@ -60,8 +61,8 @@ class LikesController extends Controller
             $recs[] = $rec;
         }
         $title = "Who I like ";
-        return view('likes',compact('recs','title'));
-    }
+    return  response()->json($recs);
+   }
 
 
     public function destroy($id)
@@ -70,9 +71,12 @@ class LikesController extends Controller
 
         $user_id = Auth::user()->id;
         $dummy =  likes::find($id)
-            ->delete();
+            ->get()->first();
+         if ($user_id == $dummy->from_user_id ) {
+             $dummy->delete();
+             return  response()->json(['message'=>'Deleted']);
 
-
-        return redirect()->back();
+         }
+        return  response()->json(['message'=>'unauthorized',401]);
     }
 }
