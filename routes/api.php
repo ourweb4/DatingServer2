@@ -58,6 +58,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/Dateabilitydeetslists/{id}',[DateabilitydeetsListsController::class,'store']);
     Route::delete('/Dateabilitydeetslists',[DateabilitydeetsListsController::class,'destroy']);
 
+    Route::get('/Myprofile', [user_profileController::class,'myprofile']);
+
     Route::get('/Userprofile', [user_profileController::class,'index']);
     Route::get('/Userprofile/{id}', [user_profileController::class,'show']);
     Route::post('/Userprofile', [user_profileController::class,'store']);

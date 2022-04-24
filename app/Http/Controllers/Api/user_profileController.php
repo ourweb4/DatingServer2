@@ -88,4 +88,12 @@ class user_profileController extends Controller
         return response()->json($recs);
     }
 
+
+    public function myprofile()
+    {
+        //
+        $id = Auth::user()->id;
+        $recs = user_profile::where('user_id', '=', $id)->first();
+        return response()->json($recs);
+    }
 }
