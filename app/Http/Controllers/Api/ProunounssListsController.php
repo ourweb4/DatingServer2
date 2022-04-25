@@ -29,11 +29,11 @@ class ProunounsListsController extends Controller
 
     }
 
-    public function index()
+    public function index($id)
     {
         //
 
-        $user_id = Auth::user()->id;
+        $user_id = $id;
         $recs =     Prounouns_list::where('user_id','='.$user_id)->all();
 
         return response()->json($recs);
