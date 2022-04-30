@@ -124,15 +124,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/usersystem',[UserSystemController::class,'search']);
 });
 
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
-
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    return redirect('/home');
-})->middleware(['auth', 'signed'])->name('verification.verify');
 
 //Route::resource('/admin.gender',gendercontroller::class);
 
@@ -142,7 +133,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/logout', [LogoutController::class,'perform']);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

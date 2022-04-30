@@ -18,7 +18,7 @@ class LikesController extends Controller
 {
     public function index()
     {
-        //\
+        //
     }
 
     public function new($id)

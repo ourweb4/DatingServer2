@@ -10,6 +10,7 @@
         "ext-gd": "*",
         "darkaonline/l5-swagger": "^8.3",
         "doctrine/dbal": "~2.3",
+        "encore/laravel-admin": "^1.8",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.4",
         "infyomlabs/adminlte-templates": "^3.0",

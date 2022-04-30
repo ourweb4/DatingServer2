@@ -29,12 +29,23 @@ class DateabilitydeetsListsController extends Controller
 
     }
 
-    public function index($id)
+    public function index()
     {
         //
 
-        $user_id = $id;
-        $recs =     dateabilitydeets_list::where('user_id','='.$user_id)->all();
+        $user_id = Auth::user()->id;
+        $recs =     dateabilitydeets_list::all()->where('user_id','=',$user_id);
+
+        return response()->json($recs);
+    }
+
+
+    public function show($id)
+    {
+        //
+
+       // $user_id = Auth::user()->id;
+        $recs =     dateabilitydeets_list::all()->where('user_id','=',$id);
 
         return response()->json($recs);
     }
@@ -44,7 +55,7 @@ class DateabilitydeetsListsController extends Controller
     {
         //
         $user_id = Auth::user()->id;
-        dateabilitydeets_list::where('user_id','='.$user_id)->delete();
+        dateabilitydeets_list::where('user_id','=',$user_id)->delete();
         return response()->json([
             'message' => 'List has  been remove'
         ]);

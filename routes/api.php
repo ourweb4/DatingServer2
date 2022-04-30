@@ -35,26 +35,33 @@ Route::post('/Register',[AuthController::class,'Register']);
 Route::post('/Login',[AuthController::class,'Login']);
 Route::post('/Forgot',[AuthController::class,'Forgot']);
 
+Route::get('/Children',[ChildrenController::class,'index']);
+Route::get('/Dateabilitydeets',[dateabilitydeetsController::class,'index']);
+Route::get('/Education',[EducationController::class,'index']);
+Route::get('/Genders',[GendersController::class,'index']);
+Route::get('/Interests',[InterestsController::class,'index']);
+Route::get('/Politics',[PoliticsController::class,'index']);
+Route::get('/Pronouns',[PronounsController::class,'index']);
+Route::get('/Religions',[ReligionsController::class,'index']);
+
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('/Logout',[AuthController::class,'Logout']);
 
-    Route::get('/Children',[ChildrenController::class,'index']);
-    Route::get('/Dateabilitydeets',[dateabilitydeetsController::class,'index']);
-    Route::get('/Education',[EducationController::class,'index']);
-    Route::get('/Genders',[GendersController::class,'index']);
-    Route::get('/Interests',[InterestsController::class,'index']);
-    Route::get('/Politics',[PoliticsController::class,'index']);
-    Route::get('/Pronouns',[PronounsController::class,'index']);
-    Route::get('/Religions',[ReligionsController::class,'index']);
-
-    Route::get('/ProunounsLists/{id}',[ProunounsListsController::class,'index']);
+    Route::get('/ProunounsLists',[ProunounsListsController::class,'index']);
+    Route::get('/ProunounsLists/{id}',[ProunounsListsController::class,'show']);
     Route::post('/ProunounsLists/{id}',[ProunounsListsController::class,'store']);
     Route::delete('/ProunounsLists',[ProunounsListsController::class,'destroy']);
-    Route::get('/InterestsLists/{id}',[InterestssListsController::class,'index']);
+
+    Route::get('/InterestsLists',[InterestssListsController::class,'index']);
+    Route::get('/InterestsLists/{id}',[InterestssListsController::class,'show']);
+
     Route::post('/InterestsLists/{id}',[InterestssListsController::class,'store']);
     Route::delete('/InterestsLists',[InterestssListsController::class,'destroy']);
-    Route::get('/Dateabilitydeetslists/{id}',[DateabilitydeetsListsController::class,'index']);
+
+    Route::get('/Dateabilitydeetslists',[DateabilitydeetsListsController::class,'index']);
+    Route::get('/Dateabilitydeetslists/{id}',[DateabilitydeetsListsController::class,'show']);
     Route::post('/Dateabilitydeetslists/{id}',[DateabilitydeetsListsController::class,'store']);
     Route::delete('/Dateabilitydeetslists',[DateabilitydeetsListsController::class,'destroy']);
 
@@ -81,6 +88,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/Likes/{id}',[LikesController::class,'new']);
     Route::delete('/Likes/{id}',[LikesController::class,'destroy']);
 
+//
+//
+//
+//
+//
+//
 });
 
 
