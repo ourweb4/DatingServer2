@@ -37,7 +37,7 @@ class LikesController extends Controller
     public function me()
     {
         //
-         $recs[]=array();
+//         $recs[]=array();
         $user_id = Auth::user()->id;
         $likes = likes::where('to_user_id','=',$user_id)->get();
         foreach ($likes as $like) {
@@ -53,7 +53,7 @@ class LikesController extends Controller
     {
         //
 
-        $recs[]=array();
+  //      $recs[]=array();
         $user_id = Auth::user()->id;
         $likes = likes::where('from_user_id','=',$user_id)->get();
         foreach ($likes as $like) {

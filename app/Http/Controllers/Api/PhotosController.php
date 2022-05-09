@@ -23,8 +23,10 @@ class PhotosController extends Controller
         //
         $user_id = Auth::user()->id;
         $recs = photos::all()->where('user_id','=', $user_id);
+        return response()->json($recs);
 
-     }
+
+    }
 
     public function store(Request $request)
     {
@@ -43,7 +45,7 @@ class PhotosController extends Controller
             Image::make($pic)->resize(200, 200)->save($full_name);
             $rec->filename=$full_name;
             $rec->save();
-            return response()->json($rec);
+             return response()->json($rec);
         } else {
             return  response()->json(['message'=>'No file uploaded'
            ] );

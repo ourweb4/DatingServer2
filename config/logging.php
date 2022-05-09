@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'deprecations' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
+   'deprecations' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
 
     /*
     |--------------------------------------------------------------------------
@@ -115,11 +115,21 @@ return [
         ],
 
         'user' => [
-          'driver' => 'single',
+            'driver' => 'single',
             'level' => env('LOG_LEVEL', 'debug'),
             'path' => storage_path('logs/user.log'),
 
         ],
+
+
+        'message' => [
+            'driver' => 'single',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'path' => storage_path('logs/message.log'),
+
+        ],
+
     ],
+
 
 ];

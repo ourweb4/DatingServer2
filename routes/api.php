@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/Userprofile', [user_profileController::class,'index']);
     Route::get('/Userprofile/{id}', [user_profileController::class,'show']);
     Route::post('/Userprofile', [user_profileController::class,'store']);
+    Route::post('/Profilepic',[user_profileController::class,'upload']);
 
     Route::post('/Match',[MatchController::class,'index']);
 
@@ -86,7 +87,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/Likes',[LikesController::class,'who']);
     Route::get('/Me',[LikesController::class,'me']);
     Route::post('/Likes/{id}',[LikesController::class,'new']);
-    Route::delete('/Likes/{id}',[LikesController::class,'destroy']);
+     Route::delete('/Likes/{id}',[LikesController::class,'destroy']);
 
 //
 //

@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use App\Models\user_profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
 class MessagesController extends Controller
@@ -24,7 +24,10 @@ class MessagesController extends Controller
         //
         $user_id = Auth::user()->id;
         $user = user_profile::first('user_id','=',$user_id);
-         $recs = $user->Recv_Messages();
+         $recs = messages::where('to_user_id','=',$user_id)->get();
+         foreach ($recs as $rec) {
+             messages::find($rec->id)->delete();
+         }
          return response()->json($recs);
 
     }
