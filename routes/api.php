@@ -69,6 +69,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/Userprofile', [user_profileController::class,'index']);
     Route::get('/Userprofile/{id}', [user_profileController::class,'show']);
+    Route::get('/Userprofile', [user_profileController::class,'home']);
+
     Route::post('/Userprofile', [user_profileController::class,'store']);
     Route::post('/Profilepic',[user_profileController::class,'upload']);
 

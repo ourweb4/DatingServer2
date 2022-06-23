@@ -24,6 +24,14 @@ class user_profileController extends Controller
         return response()->json($recs);
     }
 
+    public function home()
+    {
+        //
+        $recs = user_profile::orderByDesc('updated_at')->take(5)->get();
+        return response()->json($recs);
+    }
+
+
     public function store(Request $request)
     {
         //
@@ -128,13 +136,15 @@ class user_profileController extends Controller
                 $name_gen = hexdec(uniqid());
                 $ext = strtoupper($pic->getClientOriginalExtension());
 
-                $full_name =  'images/' . $name_gen . '.' . $ext;
+                $full_name =  '/home/dateabil/public_html/public/images/' . $name_gen . '.' . $ext;
 
                 Image::make($pic)->resize(200, 200)->save($full_name);
+                $full_name =  'images/' . $name_gen . '.' . $ext;
+
                 $up->profilepicture = $full_name;
                 $up->save();
                 return response()->json([
-                    'message' => 'File uploaded'
+                    'message' => $full_name
                 ]);
             }
         return response()->json([

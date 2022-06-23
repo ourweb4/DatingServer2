@@ -40,9 +40,12 @@ class PhotosController extends Controller
             $name_gen = hexdec(uniqid());
             $ext = strtoupper($pic->getClientOriginalExtension());
 
+            $full_name1 =  '/home/dateabil/public_html/public/images/' . $name_gen . '.' . $ext;
+
+
             $full_name =  'images/' . $name_gen . '.' . $ext;
 
-            Image::make($pic)->resize(200, 200)->save($full_name);
+            Image::make($pic)->resize(200, 200)->save($full_name1);
             $rec->filename=$full_name;
             $rec->save();
              return response()->json($rec);
