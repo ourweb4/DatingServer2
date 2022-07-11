@@ -138,7 +138,7 @@ class user_profileController extends Controller
 
                 $full_name =  '/home/dateabil/public_html/public/images/' . $name_gen . '.' . $ext;
 
-                Image::make($pic)->resize(200, 200)->save($full_name);
+                Image::make($pic)->resize(200, 200)->rotate(-90)->save($full_name);
                 $full_name =  'images/' . $name_gen . '.' . $ext;
 
                 $up->profilepicture = $full_name;

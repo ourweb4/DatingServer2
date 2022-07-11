@@ -19,11 +19,10 @@ class DateabilitydeetsListsController extends Controller
     {
         //
         $user_id = Auth::user()->id;
-        $recs =     dateabilitydeets_list::create([
-                'dateabilitydeets_id' => $id,
-                'user_id' => $user_id
-
-        ]);
+        $recs =   new  dateabilitydeets_list();
+        $recs->dateabilitydeets_id = $id;
+        $recs->user_id = $user_id;
+         $recs->save();
 
         return response()->json($recs);
 
@@ -34,7 +33,7 @@ class DateabilitydeetsListsController extends Controller
         //
 
         $user_id = Auth::user()->id;
-        $recs =     dateabilitydeets_list::all()->where('user_id','=',$user_id);
+        $recs =     dateabilitydeets_list::where('user_id','=',$user_id)->get();
 
         return response()->json($recs);
     }
@@ -45,7 +44,7 @@ class DateabilitydeetsListsController extends Controller
         //
 
        // $user_id = Auth::user()->id;
-        $recs =     dateabilitydeets_list::all()->where('user_id','=',$id);
+        $recs =     dateabilitydeets_list::where('user_id','=',$id)->get();
 
         return response()->json($recs);
     }

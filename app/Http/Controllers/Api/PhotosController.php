@@ -45,7 +45,7 @@ class PhotosController extends Controller
 
             $full_name =  'images/' . $name_gen . '.' . $ext;
 
-            Image::make($pic)->resize(200, 200)->save($full_name1);
+            Image::make($pic)->resize(200, 200)->rotate(-90)->save($full_name1);
             $rec->filename=$full_name;
             $rec->save();
              return response()->json($rec);

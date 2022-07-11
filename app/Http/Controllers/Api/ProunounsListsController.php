@@ -18,7 +18,7 @@ class ProunounsListsController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
-        $recs =     Prounouns_list::all()->where('user_id','=',$user_id);
+        $recs =     Prounouns_list::where('user_id','=',$user_id)->get();
 
         return response()->json($recs);
     }
@@ -28,12 +28,10 @@ class ProunounsListsController extends Controller
     {
         //
         $user_id = Auth::user()->id;
-        $recs =   Prounouns_list::create([
-            'pronouns_id' => $id,
-            'user_id' => $user_id
-
-        ]);
-
+        $recs =  new Prounouns_list();
+        $recs->pronouns_id = $id;
+        $recs->user_id = $user_id;
+        $recs->save();
         return response()->json($recs);
 
     }
@@ -41,8 +39,7 @@ class ProunounsListsController extends Controller
     public function show($id)
     {
          //$user_id = Auth::user()->id;
-        $recs =     Prounouns_list::all()
-            ->where('user_id','=',$id);
+        $recs =     Prounouns_list::where('user_id','=',$id)->get();
 
         return response()->json($recs);
     }

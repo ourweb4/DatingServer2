@@ -19,11 +19,10 @@ class InterestssListsController extends Controller
     {
         //
         $user_id = Auth::user()->id;
-        $recs =     interests_list::create([
-                'interests_id' => $id,
-                'user_id' => $user_id
-
-        ]);
+        $recs = new     interests_list();
+        $recs->interests_id = $id;
+        $recs->user_id = $user_id;
+        $recs->save();
 
         return response()->json($recs);
 
@@ -34,8 +33,7 @@ class InterestssListsController extends Controller
         //
 
         $user_id = Auth::user()->id;
-        $recs =     interests_list::all()
-            ->where('user_id','=',$user_id);
+        $recs =     interests_list::where('user_id','=',$user_id)->get();
 
         if ($recs == null )
             $recs = [
@@ -52,8 +50,7 @@ class InterestssListsController extends Controller
 
 
         //$user_id = Auth::user()->id;
-        $recs =     interests_list::all()
-            ->where('user_id','=', $id);
+        $recs =     interests_list::where('user_id','=', $id)->get();
 
         return response()->json($recs);
     }
